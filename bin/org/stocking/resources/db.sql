@@ -1,0 +1,1 @@
+create table IF NOT EXISTS insumos(id integer primary key, nombre varchar(100), cantidad integer);
