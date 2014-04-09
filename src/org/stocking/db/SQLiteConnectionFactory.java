@@ -22,14 +22,14 @@ public class SQLiteConnectionFactory {
 	
 	
 	private SQLiteConnectionFactory(){
-		InputStream propertiesStream = this.getClass().getResourceAsStream("/org/stocking/resources/escuela.properties");
+		InputStream propertiesStream = this.getClass().getResourceAsStream("/org/stocking/resources/stocking.properties");
 		Properties properties = new Properties();
 		try {
 			properties.load(propertiesStream);
 			System.out.println(properties.getProperty("db.location"));
 			connection = DriverManager.getConnection("jdbc:sqlite:" + properties.getProperty("db.location"));
 			Statement statement = connection.createStatement();
-			String checkQuery = "SELECT name FROM sqlite_master WHERE type='table' AND name='cursos'";
+			String checkQuery = "SELECT name FROM sqlite_master WHERE type='table' AND name='insumos'";
 			ResultSet resultSet = statement.executeQuery(checkQuery);
 			if(!resultSet.next()){
 				//SCHEMA NOT CREATED!
